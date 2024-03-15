@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class ApplicationConfigApplicationContext {
+public class ApplicationConfigSameBeanFindContext {
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(SameBeanConfig.class);
 
     @Test
@@ -36,12 +36,11 @@ public class ApplicationConfigApplicationContext {
     void findAllBeanByType(){
         Map<String, MemberRepository> beansOfType = ac.getBeansOfType(MemberRepository.class);
         for (String key : beansOfType.keySet()) {
-            System.out.println("key = " + key + "value = " + beansOfType.get(key));
+            System.out.println("key = " + key + " value = " + beansOfType.get(key));
         }
         System.out.println("beansOfType = " + beansOfType);
         assertThat(beansOfType.size()).isEqualTo(2);
     }
-
 
     @Configuration
     static class SameBeanConfig {
