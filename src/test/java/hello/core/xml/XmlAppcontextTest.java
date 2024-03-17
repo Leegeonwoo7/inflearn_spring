@@ -3,6 +3,7 @@ package hello.core.xml;
 import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberService;
 import hello.core.order.OrderService;
+import hello.core.order.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +22,7 @@ public class XmlAppcontextTest {
 
     @Test
     void xmlTest(){
-        OrderService orderService = ac.getBean(OrderService.class);
-        assertThat(orderService).isInstanceOf(RateDiscountPolicy.class);
+        OrderService orderService = ac.getBean("orderService",OrderService.class);
+        assertThat(orderService).isInstanceOf(OrderServiceImpl.class);
     }
 }
